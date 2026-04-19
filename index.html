@@ -220,7 +220,7 @@
   .marquee-track {
     display: flex;
     white-space: nowrap;
-    animation: scroll 45s linear infinite;
+    animation: scroll 25s linear infinite;
     font-family: 'Fraunces', serif;
     font-size: 56px;
     font-weight: 300;
@@ -310,11 +310,63 @@
     line-height: 1.9;
     color: var(--ink-soft);
   }
+  .about-portrait {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin-bottom: 40px;
+  }
+  .about-portrait img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: grayscale(15%) contrast(1.02);
+    transition: filter 0.5s ease, transform 0.5s ease;
+    position: relative;
+    z-index: 2;
+  }
+  .about-portrait::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .about-portrait::after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    right: -8px;
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 50%;
+    z-index: 3;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .about-portrait:hover img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.02);
+  }
+  .about-portrait .portrait-caption {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-mute);
+    white-space: nowrap;
+  }
   .about-side dl {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 8px 24px;
-    margin: 0;
+    margin: 40px 0 0 0;
   }
   .about-side dt {
     color: var(--ink-mute);
@@ -458,6 +510,24 @@
     line-height: 1.6;
     color: var(--ink-soft);
     max-width: 60ch;
+  }
+  .experience-split {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: var(--bg-deep);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+  .experience-split strong {
+    color: var(--accent-deep);
+    font-weight: 700;
   }
 
   @media (max-width: 720px) {
@@ -641,8 +711,8 @@
 <!-- ============== MARQUEE ============== -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Node.js</span><span>Next.js</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
-    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Node.js</span><span>Next.js</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
+    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Flask</span><span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Apache Kafka</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
+    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Flask</span><span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Apache Kafka</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
   </div>
 </div>
 
@@ -654,13 +724,18 @@
   <div class="about-grid">
     <div class="reveal">
       <p>For the past six years I've been the first and only senior engineer at Vise Tecnologia, where I built the company's entire technical foundation from day zero. <em>Every product, every architecture decision, every line of revenue has my fingerprint on it.</em></p>
-      <p>I lead the development team, mentor engineers from intern to mid-level, and serve as the direct technical point of contact for clients — gathering requirements, negotiating timelines, and translating business needs into technical solutions.</p>
+      <p>I'm a hands-on senior fullstack engineer first — my day is about 70% writing code and 30% leading the team, mentoring engineers, and serving as the direct technical point of contact for clients. I translate business needs into technical solutions, and I stay close to the stack so I can lead by example.</p>
       <p>What sets me apart is the breadth of domains I've worked in: cargo tracking, precision agriculture, port trade operations with AI-powered compliance auditing, manufacturing inspection, customer data platforms, and telecom billing — each with its own rules, constraints, and edge cases.</p>
     </div>
 
     <aside class="about-side reveal">
+      <div class="about-portrait">
+        <img src="victor.png" alt="Victor Nunes" />
+        <div class="portrait-caption">— Victor, in São Paulo</div>
+      </div>
       <dl>
-        <dt>Role</dt><dd>Senior SWE &amp; Tech Lead</dd>
+        <dt>Role</dt><dd>Senior Fullstack Eng.<br>&amp; Tech Lead</dd>
+        <dt>Split</dt><dd>~70% code · 30% lead</dd>
         <dt>Based in</dt><dd>São Paulo, Brazil</dd>
         <dt>Focus</dt><dd>Fullstack · Platforms · AI</dd>
         <dt>Languages</dt><dd>PT-BR native<br>EN — C1 (Duolingo 130)</dd>
@@ -681,11 +756,11 @@
     <div>
       <div class="project-title display">Internal <em>MCP Server</em></div>
       <div class="project-tags">
-        <span>Python</span><span>MCP</span><span>Developer Experience</span><span>LLM</span>
+        <span>Python</span><span>MCP</span><span>Standards Enforcement</span><span>Developer Experience</span>
       </div>
     </div>
     <div class="project-description">
-      An MCP server that scaffolds fully configured applications in minutes instead of hours. Engineers describe the app they need and get a running project — local database, frontend, auth, and company standards — before their coffee cools. Eliminated boilerplate entirely for the engineering team.
+      An MCP server built to enforce consistency in AI-assisted development. When teams code with AI 100% of the time, standards drift fast — every engineer gets a slightly different boilerplate from their LLM. This MCP solves that at the source: engineers describe the app they need and get a fully configured project — local database, frontend, auth, and company standards baked in — before their coffee cools. One source of truth, zero boilerplate drift.
     </div>
     <div class="project-arrow">↗</div>
   </a>
@@ -693,13 +768,13 @@
   <a class="project reveal" href="#" target="_blank">
     <div class="project-number">② / 04</div>
     <div>
-      <div class="project-title display">AI Lab Report <em>Auditor</em></div>
+      <div class="project-title display">AI Document <em>Compliance Checker</em></div>
       <div class="project-tags">
-        <span>Python</span><span>RAG</span><span>LLM Agents</span><span>Prompt Engineering</span>
+        <span>Python</span><span>LLM Agents</span><span>Prompt Engineering</span><span>PDF Processing</span>
       </div>
     </div>
     <div class="project-description">
-      An AI agent that audits laboratory reports for compliance against industry standards. Extracts PDF content, evaluates against structured criteria via LLM with RAG, and produces a scored compliance report. Built originally for port trade operations, now open-sourced as a reference implementation.
+      An AI agent that validates PDF documents against structured compliance criteria. Extracts content, evaluates against configurable rules via LLM, and produces a scored report with specific findings. A reusable reference implementation for any industry requiring document auditing — legal, finance, regulatory, you name it.
     </div>
     <div class="project-arrow">↗</div>
   </a>
@@ -707,13 +782,13 @@
   <a class="project reveal" href="#" target="_blank">
     <div class="project-number">③ / 04</div>
     <div>
-      <div class="project-title display">Precision <em>Agriculture</em> Stack</div>
+      <div class="project-title display">Offline-First <em>Field Collector</em></div>
       <div class="project-tags">
         <span>FastAPI</span><span>React Native</span><span>Offline-First</span><span>Geoprocessing</span>
       </div>
     </div>
     <div class="project-description">
-      A complete precision agriculture system. React Native app with offline soil sample collection, sync-on-reconnect architecture, FastAPI backend, and cartographic map generation with interpolation. Runs where there's no internet — by design.
+      A complete field data collection system for teams working in remote areas. React Native app with offline-first architecture, local storage with sync-on-reconnect, FastAPI backend, and map generation with spatial interpolation from geolocated samples. Works where there's no internet — by design.
     </div>
     <div class="project-arrow">↗</div>
   </a>
@@ -721,13 +796,13 @@
   <a class="project reveal" href="#" target="_blank">
     <div class="project-number">④ / 04</div>
     <div>
-      <div class="project-title display">Real-time <em>Cargo Tracker</em></div>
+      <div class="project-title display">Real-time <em>Asset Tracker</em></div>
       <div class="project-tags">
         <span>Node.js</span><span>RabbitMQ</span><span>Kubernetes</span><span>WebSocket</span>
       </div>
     </div>
     <div class="project-description">
-      Event-driven cargo tracking ecosystem. Node.js microservices, RabbitMQ for event processing, Kubernetes orchestration, WebSocket-powered real-time map updates. Designed to handle thousands of tracker events per second without breaking a sweat.
+      Event-driven asset tracking platform. Node.js microservices ingest location events from devices, process them through RabbitMQ queues, persist to the database, and push real-time updates to the frontend map via WebSocket. Fully orchestrated with Kubernetes. Designed to handle thousands of events per second without breaking a sweat.
     </div>
     <div class="project-arrow">↗</div>
   </a>
@@ -741,9 +816,10 @@
   <div class="experience-item reveal">
     <div class="experience-period">2020 — Present</div>
     <div>
-      <h3 class="experience-role display">Head of R&amp;D · <em>Tech Lead</em></h3>
+      <h3 class="experience-role display">Senior Fullstack Engineer · <em>Head of R&amp;D</em></h3>
       <div class="experience-company">Vise Tecnologia</div>
-      <p class="experience-description">First engineer hired. Built the company's entire technical foundation from day zero. Lead the development team, own architecture decisions, and serve as direct technical contact for clients across seven industries. Recently introduced AI Engineering and Developer Experience practices that transformed team productivity.</p>
+      <p class="experience-description">First engineer hired. Built the company's entire technical foundation from day zero. Still hands-on with code every day — architecting solutions, shipping features, and solving the hardest technical problems myself — while also leading the development team, mentoring engineers from intern to mid-level, and serving as the direct technical contact for clients across seven industries. Recently introduced AI Engineering and Developer Experience practices that transformed team productivity.</p>
+      <div class="experience-split">Day-to-day split <strong>~70% code</strong> · <strong>30% lead</strong></div>
     </div>
   </div>
 
