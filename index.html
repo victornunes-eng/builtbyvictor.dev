@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Victor Nunes — Senior Software Engineer</title>
+<meta name="description" content="Senior Software Engineer & Tech Lead. 9+ years building products across industries. Python, React, Node.js, AI Engineering." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-deep: #ece8df;
+    --ink: #1a1814;
+    --ink-soft: #555049;
+    --ink-mute: #8a837a;
+    --accent: #ff3b1f;
+    --accent-deep: #d82f18;
+    --line: #d8d3c8;
+    --paper: #fefcf7;
+    --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: var(--grain);
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* -------- NAV -------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: #f4f1ea;
+  }
+  nav .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  nav .brand span { font-style: italic; font-weight: 300; }
+  nav .links {
+    display: flex;
+    gap: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  nav .links a {
+    position: relative;
+    padding-bottom: 2px;
+  }
+  nav .links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  nav .links a:hover::after { width: 100%; }
+
+  @media (max-width: 720px) {
+    nav { padding: 18px 24px; }
+    nav .links { gap: 18px; font-size: 10px; }
+  }
+
+  /* -------- HERO -------- */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+  }
+  .hero-meta .status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-meta .status::before {
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(58px, 11vw, 184px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero h1 .tagline-sub {
+    display: block;
+    font-size: 0.35em;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+    letter-spacing: -0.02em;
+    margin-top: 0.4em;
+  }
+
+  .hero-footer {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-footer .col-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
+  }
+  .hero-footer p {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .hero-footer .stat {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .hero-footer .stat em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .hero { padding: 120px 24px 60px; }
+    .hero-footer { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* -------- MARQUEE -------- */
+  .marquee {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 20px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    position: relative;
+  }
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 45s linear infinite;
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+  }
+  .marquee-track span {
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+  }
+  .marquee-track span::after {
+    content: "✦";
+    color: var(--accent);
+    font-size: 28px;
+  }
+  @keyframes scroll {
+    to { transform: translateX(-50%); }
+  }
+
+  /* -------- SECTION GENERAL -------- */
+  section.chapter {
+    padding: 140px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) {
+    section.chapter { padding: 100px 24px; }
+  }
+
+  .chapter-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    margin-bottom: 48px;
+  }
+  .chapter-label::before {
+    content: "";
+    width: 40px; height: 1px;
+    background: var(--ink-mute);
+  }
+
+  .chapter-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(42px, 6vw, 86px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0 0 80px 0;
+    max-width: 20ch;
+  }
+  .chapter-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* -------- ABOUT -------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-grid p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    margin: 0 0 32px 0;
+    color: var(--ink);
+  }
+  .about-grid p em {
+    font-style: italic;
+    color: var(--accent-deep);
+  }
+  .about-side {
+    position: sticky;
+    top: 120px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+  .about-side dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 24px;
+    margin: 0;
+  }
+  .about-side dt {
+    color: var(--ink-mute);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-top: 4px;
+  }
+  .about-side dd { margin: 0; }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-side { position: static; }
+  }
+
+  /* -------- WORK / PROJECTS -------- */
+  .work-chapter {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 160px 0 0;
+  }
+  .work-chapter .chapter-label { color: #a09787; }
+  .work-chapter .chapter-label::before { background: #a09787; }
+  .work-chapter .chapter-title { color: var(--bg); padding: 0 48px; max-width: 1400px; margin: 0 auto 100px; }
+  .work-chapter .chapter-label { padding: 0 48px; max-width: 1400px; margin: 0 auto 48px; display: flex; }
+
+  .project {
+    border-top: 1px solid rgba(244, 241, 234, 0.15);
+    padding: 60px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr 120px;
+    gap: 60px;
+    align-items: start;
+    transition: background 0.4s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .project:last-child { border-bottom: 1px solid rgba(244, 241, 234, 0.15); }
+  .project:hover { background: rgba(255, 59, 31, 0.04); }
+  .project:hover .project-title { color: var(--accent); }
+  .project:hover .project-arrow { transform: translate(8px, -8px); color: var(--accent); }
+
+  .project-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+  .project-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+  }
+  .project-title em {
+    font-style: italic;
+  }
+  .project-description {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #b8b2a6;
+    max-width: 48ch;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .project-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border: 1px solid rgba(244, 241, 234, 0.2);
+    border-radius: 999px;
+    color: #d4cebf;
+  }
+  .project-arrow {
+    font-size: 44px;
+    line-height: 0.8;
+    color: #6b6458;
+    transition: all 0.3s ease;
+    text-align: right;
+    font-weight: 200;
+  }
+
+  @media (max-width: 900px) {
+    .project { grid-template-columns: 40px 1fr; gap: 20px; padding: 40px 24px; }
+    .project-description, .project-arrow { grid-column: 1 / -1; }
+    .project-arrow { text-align: left; font-size: 32px; }
+    .work-chapter .chapter-title, .work-chapter .chapter-label { padding: 0 24px; }
+  }
+
+  /* -------- EXPERIENCE TIMELINE -------- */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 80px;
+  }
+  .experience-item {
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .experience-item:last-child { border-bottom: 1px solid var(--line); }
+  .experience-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 12px;
+  }
+  .experience-role {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 4px 0;
+  }
+  .experience-role em { font-style: italic; color: var(--accent); }
+  .experience-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .experience-description {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  @media (max-width: 720px) {
+    .experience-item { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+  }
+
+  /* -------- CONTACT -------- */
+  .contact {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 140px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .contact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(254, 252, 247, 0.7);
+    margin-bottom: 40px;
+  }
+  .contact h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 128px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0 0 60px 0;
+    max-width: 14ch;
+  }
+  .contact h2 em { font-style: italic; }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .contact-link {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    padding: 16px 32px;
+    border: 1px solid var(--bg);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-link:hover {
+    background: var(--bg);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .contact-link .arrow {
+    transition: transform 0.3s ease;
+  }
+  .contact-link:hover .arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* big signature in contact */
+  .contact-signature {
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(120px, 22vw, 380px);
+    line-height: 0.8;
+    color: rgba(254, 252, 247, 0.1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (max-width: 720px) {
+    .contact { padding: 100px 24px; }
+  }
+
+  /* -------- FOOTER -------- */
+  footer {
+    background: var(--ink);
+    color: var(--ink-mute);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 720px) {
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  }
+
+  /* -------- SCROLL REVEAL -------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* hero reveal staggered */
+  .hero-meta { animation: fadeIn 0.9s 0.1s both; }
+  .hero h1 .line { opacity: 0; transform: translateY(40px); animation: riseIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; display: inline-block; }
+  .hero h1 .line:nth-child(1) { animation-delay: 0.2s; }
+  .hero h1 .line:nth-child(2) { animation-delay: 0.35s; }
+  .hero h1 .line:nth-child(3) { animation-delay: 0.5s; }
+  .hero h1 .tagline-sub { opacity: 0; animation: fadeIn 1s 0.9s forwards; }
+  .hero-footer { opacity: 0; animation: fadeIn 1s 1.1s forwards; }
+
+  @keyframes riseIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">V. Nunes <span>— portfolio '26</span></div>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-meta">
+    <div class="status">Available for new opportunities</div>
+    <div>São Paulo · Brazil · GMT-3</div>
+  </div>
+
+  <h1>
+    <span class="line">Engineering</span><br>
+    <span class="line">that ships.</span><br>
+    <span class="line"><em>Always.</em></span>
+    <span class="tagline-sub">Senior Software Engineer &amp; Tech Lead building products across industries for nine years and counting.</span>
+  </h1>
+
+  <div class="hero-footer">
+    <div>
+      <div class="col-label">— Philosophy</div>
+      <p>Code is just the beginning. What matters is what it enables — for the business, for the team, and for the people using what you build.</p>
+    </div>
+    <div>
+      <div class="col-label">— Experience</div>
+      <div class="stat"><em>9</em>+ yrs</div>
+      <p style="margin-top: 12px; font-size: 14px;">across fullstack, leadership, and AI engineering.</p>
+    </div>
+    <div>
+      <div class="col-label">— Industries</div>
+      <div class="stat">7<em>+</em></div>
+      <p style="margin-top: 12px; font-size: 14px;">from precision agriculture to port operations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MARQUEE ============== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Node.js</span><span>Next.js</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
+    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Node.js</span><span>Next.js</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
+  </div>
+</div>
+
+<!-- ============== ABOUT ============== -->
+<section class="chapter" id="about">
+  <div class="chapter-label reveal">— 01 / About</div>
+  <h2 class="chapter-title display reveal">Senior engineer. <em>Multi-domain</em> builder.</h2>
+
+  <div class="about-grid">
+    <div class="reveal">
+      <p>For the past six years I've been the first and only senior engineer at Vise Tecnologia, where I built the company's entire technical foundation from day zero. <em>Every product, every architecture decision, every line of revenue has my fingerprint on it.</em></p>
+      <p>I lead the development team, mentor engineers from intern to mid-level, and serve as the direct technical point of contact for clients — gathering requirements, negotiating timelines, and translating business needs into technical solutions.</p>
+      <p>What sets me apart is the breadth of domains I've worked in: cargo tracking, precision agriculture, port trade operations with AI-powered compliance auditing, manufacturing inspection, customer data platforms, and telecom billing — each with its own rules, constraints, and edge cases.</p>
+    </div>
+
+    <aside class="about-side reveal">
+      <dl>
+        <dt>Role</dt><dd>Senior SWE &amp; Tech Lead</dd>
+        <dt>Based in</dt><dd>São Paulo, Brazil</dd>
+        <dt>Focus</dt><dd>Fullstack · Platforms · AI</dd>
+        <dt>Languages</dt><dd>PT-BR native<br>EN — C1 (Duolingo 130)</dd>
+        <dt>Education</dt><dd>MBA Software Eng.<br>FIAP · 2025-2026</dd>
+        <dt>Current stack</dt><dd>Python, TypeScript,<br>React, Node.js</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ============== WORK ============== -->
+<section class="work-chapter" id="work">
+  <div class="chapter-label reveal">— 02 / Selected Work</div>
+  <h2 class="chapter-title display reveal">Projects built to <em>ship,</em> scale and last.</h2>
+
+  <a class="project reveal" href="#" target="_blank">
+    <div class="project-number">① / 04</div>
+    <div>
+      <div class="project-title display">Internal <em>MCP Server</em></div>
+      <div class="project-tags">
+        <span>Python</span><span>MCP</span><span>Developer Experience</span><span>LLM</span>
+      </div>
+    </div>
+    <div class="project-description">
+      An MCP server that scaffolds fully configured applications in minutes instead of hours. Engineers describe the app they need and get a running project — local database, frontend, auth, and company standards — before their coffee cools. Eliminated boilerplate entirely for the engineering team.
+    </div>
+    <div class="project-arrow">↗</div>
+  </a>
+
+  <a class="project reveal" href="#" target="_blank">
+    <div class="project-number">② / 04</div>
+    <div>
+      <div class="project-title display">AI Lab Report <em>Auditor</em></div>
+      <div class="project-tags">
+        <span>Python</span><span>RAG</span><span>LLM Agents</span><span>Prompt Engineering</span>
+      </div>
+    </div>
+    <div class="project-description">
+      An AI agent that audits laboratory reports for compliance against industry standards. Extracts PDF content, evaluates against structured criteria via LLM with RAG, and produces a scored compliance report. Built originally for port trade operations, now open-sourced as a reference implementation.
+    </div>
+    <div class="project-arrow">↗</div>
+  </a>
+
+  <a class="project reveal" href="#" target="_blank">
+    <div class="project-number">③ / 04</div>
+    <div>
+      <div class="project-title display">Precision <em>Agriculture</em> Stack</div>
+      <div class="project-tags">
+        <span>FastAPI</span><span>React Native</span><span>Offline-First</span><span>Geoprocessing</span>
+      </div>
+    </div>
+    <div class="project-description">
+      A complete precision agriculture system. React Native app with offline soil sample collection, sync-on-reconnect architecture, FastAPI backend, and cartographic map generation with interpolation. Runs where there's no internet — by design.
+    </div>
+    <div class="project-arrow">↗</div>
+  </a>
+
+  <a class="project reveal" href="#" target="_blank">
+    <div class="project-number">④ / 04</div>
+    <div>
+      <div class="project-title display">Real-time <em>Cargo Tracker</em></div>
+      <div class="project-tags">
+        <span>Node.js</span><span>RabbitMQ</span><span>Kubernetes</span><span>WebSocket</span>
+      </div>
+    </div>
+    <div class="project-description">
+      Event-driven cargo tracking ecosystem. Node.js microservices, RabbitMQ for event processing, Kubernetes orchestration, WebSocket-powered real-time map updates. Designed to handle thousands of tracker events per second without breaking a sweat.
+    </div>
+    <div class="project-arrow">↗</div>
+  </a>
+</section>
+
+<!-- ============== EXPERIENCE ============== -->
+<section class="chapter" id="experience">
+  <div class="chapter-label reveal">— 03 / Experience</div>
+  <h2 class="chapter-title display reveal">A decade of <em>building</em> in production.</h2>
+
+  <div class="experience-item reveal">
+    <div class="experience-period">2020 — Present</div>
+    <div>
+      <h3 class="experience-role display">Head of R&amp;D · <em>Tech Lead</em></h3>
+      <div class="experience-company">Vise Tecnologia</div>
+      <p class="experience-description">First engineer hired. Built the company's entire technical foundation from day zero. Lead the development team, own architecture decisions, and serve as direct technical contact for clients across seven industries. Recently introduced AI Engineering and Developer Experience practices that transformed team productivity.</p>
+    </div>
+  </div>
+
+  <div class="experience-item reveal">
+    <div class="experience-period">2017 — 2020</div>
+    <div>
+      <h3 class="experience-role display">Full-Stack <em>Developer</em></h3>
+      <div class="experience-company">Meeta Web</div>
+      <p class="experience-description">Built telephony systems and IVR solutions using Python and FreeSWITCH. Developed web-based softphone applications integrated with Avaya via WebSocket. Fullstack work in PHP (Laravel, CodeIgniter), Vue.js, and MySQL.</p>
+    </div>
+  </div>
+
+  <div class="experience-item reveal">
+    <div class="experience-period">2015 — 2017</div>
+    <div>
+      <h3 class="experience-role display">IT <em>Intern</em></h3>
+      <div class="experience-company">Sabesp</div>
+      <p class="experience-description">Automated Excel reports with VBA. Built and maintained SQL Server queries for operational reporting. Analyzed call center performance indicators and generated actionable insights for management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CONTACT ============== -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-label reveal">— 04 / Let's talk</div>
+    <h2 class="reveal">Got a hard <em>problem?</em></h2>
+
+    <div class="contact-links reveal">
+      <a class="contact-link" href="mailto:victorsantnunes@hotmail.com">
+        Email <span class="arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/victor-nunes-23854a165/" target="_blank">
+        LinkedIn <span class="arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://github.com/" target="_blank">
+        GitHub <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+  <div class="contact-signature">Victor.</div>
+</section>
+
+<footer>
+  <div>© 2026 Victor Nunes — crafted with care in São Paulo</div>
+  <div>v1.0 / last updated april 2026</div>
+</footer>
+
+<script>
+  // scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+  reveals.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
