@@ -399,17 +399,12 @@
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 80px 1fr 2fr 120px;
+    grid-template-columns: 80px 1fr 2fr;
     gap: 60px;
     align-items: start;
-    transition: background 0.4s ease;
-    cursor: pointer;
     position: relative;
   }
   .project:last-child { border-bottom: 1px solid rgba(244, 241, 234, 0.15); }
-  .project:hover { background: rgba(255, 59, 31, 0.04); }
-  .project:hover .project-title { color: var(--accent); }
-  .project:hover .project-arrow { transform: translate(8px, -8px); color: var(--accent); }
 
   .project-number {
     font-family: 'JetBrains Mono', monospace;
@@ -450,18 +445,12 @@
     color: #d4cebf;
   }
   .project-arrow {
-    font-size: 44px;
-    line-height: 0.8;
-    color: #6b6458;
-    transition: all 0.3s ease;
-    text-align: right;
-    font-weight: 200;
+    display: none;
   }
 
   @media (max-width: 900px) {
     .project { grid-template-columns: 40px 1fr; gap: 20px; padding: 40px 24px; }
-    .project-description, .project-arrow { grid-column: 1 / -1; }
-    .project-arrow { text-align: left; font-size: 32px; }
+    .project-description { grid-column: 1 / -1; }
     .work-chapter .chapter-title, .work-chapter .chapter-label { padding: 0 24px; }
   }
 
@@ -739,7 +728,7 @@
         <dt>Based in</dt><dd>São Paulo, Brazil</dd>
         <dt>Focus</dt><dd>Fullstack · Platforms · AI</dd>
         <dt>Languages</dt><dd>PT-BR native<br>EN — C1 (Duolingo 130)</dd>
-        <dt>Education</dt><dd>MBA Software Eng.<br>FIAP · 2025-2026</dd>
+        <dt>Education</dt><dd>MBA Software Eng.<br>FIAP · 2025-2026<br><br>Systems Analysis &amp;<br>Development<br>Centro Universitário<br>Senac · 2018-2020</dd>
         <dt>Current stack</dt><dd>Python, TypeScript,<br>React, Node.js</dd>
       </dl>
     </aside>
@@ -749,9 +738,9 @@
 <!-- ============== WORK ============== -->
 <section class="work-chapter" id="work">
   <div class="chapter-label reveal">— 02 / Selected Work</div>
-  <h2 class="chapter-title display reveal">Projects built to <em>ship,</em> scale and last.</h2>
+  <h2 class="chapter-title display reveal">Recent projects I've <em>shipped</em> in production.</h2>
 
-  <a class="project reveal" href="#" target="_blank">
+  <div class="project reveal">
     <div class="project-number">① / 04</div>
     <div>
       <div class="project-title display">Internal <em>MCP Server</em></div>
@@ -762,10 +751,9 @@
     <div class="project-description">
       An MCP server built to enforce consistency in AI-assisted development. When teams code with AI 100% of the time, standards drift fast — every engineer gets a slightly different boilerplate from their LLM. This MCP solves that at the source: engineers describe the app they need and get a fully configured project — local database, frontend, auth, and company standards baked in — before their coffee cools. One source of truth, zero boilerplate drift.
     </div>
-    <div class="project-arrow">↗</div>
-  </a>
+  </div>
 
-  <a class="project reveal" href="#" target="_blank">
+  <div class="project reveal">
     <div class="project-number">② / 04</div>
     <div>
       <div class="project-title display">AI Document <em>Compliance Checker</em></div>
@@ -776,10 +764,9 @@
     <div class="project-description">
       An AI agent that validates PDF documents against structured compliance criteria. Extracts content, evaluates against configurable rules via LLM, and produces a scored report with specific findings. A reusable reference implementation for any industry requiring document auditing — legal, finance, regulatory, you name it.
     </div>
-    <div class="project-arrow">↗</div>
-  </a>
+  </div>
 
-  <a class="project reveal" href="#" target="_blank">
+  <div class="project reveal">
     <div class="project-number">③ / 04</div>
     <div>
       <div class="project-title display">Offline-First <em>Field Collector</em></div>
@@ -790,10 +777,9 @@
     <div class="project-description">
       A complete field data collection system for teams working in remote areas. React Native app with offline-first architecture, local storage with sync-on-reconnect, FastAPI backend, and map generation with spatial interpolation from geolocated samples. Works where there's no internet — by design.
     </div>
-    <div class="project-arrow">↗</div>
-  </a>
+  </div>
 
-  <a class="project reveal" href="#" target="_blank">
+  <div class="project reveal">
     <div class="project-number">④ / 04</div>
     <div>
       <div class="project-title display">Real-time <em>Asset Tracker</em></div>
@@ -804,8 +790,7 @@
     <div class="project-description">
       Event-driven asset tracking platform. Node.js microservices ingest location events from devices, process them through RabbitMQ queues, persist to the database, and push real-time updates to the frontend map via WebSocket. Fully orchestrated with Kubernetes. Designed to handle thousands of events per second without breaking a sweat.
     </div>
-    <div class="project-arrow">↗</div>
-  </a>
+  </div>
 </section>
 
 <!-- ============== EXPERIENCE ============== -->
