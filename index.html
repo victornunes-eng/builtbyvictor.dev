@@ -220,7 +220,8 @@
   .marquee-track {
     display: flex;
     white-space: nowrap;
-    animation: scroll 25s linear infinite;
+    width: max-content;
+    animation: scroll 10s linear infinite;
     font-family: 'Fraunces', serif;
     font-size: 56px;
     font-weight: 300;
@@ -236,6 +237,9 @@
     content: "✦";
     color: var(--accent);
     font-size: 28px;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
   }
   @keyframes scroll {
     to { transform: translateX(-50%); }
@@ -700,8 +704,8 @@
 <!-- ============== MARQUEE ============== -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Flask</span><span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Apache Kafka</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
-    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Django</span><span>Flask</span><span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Apache Kafka</span><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
+    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Flask</span><span>Django</span><span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Apache Kafka</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
+    <span>Python</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Flask</span><span>Django</span><span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>MongoDB</span><span>RabbitMQ</span><span>Apache Kafka</span><span>Docker</span><span>Kubernetes</span><span>AI Engineering</span><span>RAG</span><span>MCP</span>
   </div>
 </div>
 
@@ -727,7 +731,7 @@
         <dt>Split</dt><dd>~70% code · 30% lead</dd>
         <dt>Based in</dt><dd>São Paulo, Brazil</dd>
         <dt>Focus</dt><dd>Fullstack · Platforms · AI</dd>
-        <dt>Languages</dt><dd>PT-BR native<br>EN — C1 (Duolingo 130)</dd>
+        <dt>Languages</dt><dd>PT-BR native<br>EN — C1 (DET 130)</dd>
         <dt>Education</dt><dd>MBA Software Eng.<br>FIAP · 2025-2026<br><br>Systems Analysis &amp;<br>Development<br>Centro Universitário<br>Senac · 2018-2020</dd>
         <dt>Current stack</dt><dd>Python, TypeScript,<br>React, Node.js,<br>PostgreSQL, MongoDB,<br>RabbitMQ, Kafka</dd>
       </dl>
@@ -784,11 +788,11 @@
     <div>
       <div class="project-title display">Real-time <em>Asset Tracker</em></div>
       <div class="project-tags">
-        <span>Node.js</span><span>RabbitMQ</span><span>Kubernetes</span><span>WebSocket</span>
+        <span>Node.js</span><span>React</span><span>RabbitMQ</span><span>Kubernetes</span>
       </div>
     </div>
     <div class="project-description">
-      Event-driven asset tracking platform. Node.js microservices ingest location events from devices, process them through RabbitMQ queues, persist to the database, and push real-time updates to the frontend map via WebSocket. Fully orchestrated with Kubernetes. Designed to handle thousands of events per second without breaking a sweat.
+      Event-driven asset tracking platform. Node.js microservices ingest location events from devices, process them through RabbitMQ queues, and persist to the database. A React frontend consumes a REST API to display an always up-to-date map of tracked assets. Fully orchestrated with Kubernetes. Designed to handle thousands of events per second without breaking a sweat.
     </div>
   </div>
 </section>
